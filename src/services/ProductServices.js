@@ -2,7 +2,7 @@
 * Author: Md. Sholayman
 * Description: This is the file that contains all the services for the controllers of the Product.
 * Basically in this file We will complete all the query for product controllers.
-* Date : 23 December 2023
+* Date : 23-24 December 2023
 * */
 
 //importing necessary modules
@@ -25,7 +25,7 @@ const BrandListService =async () =>{
       return {status:"success" , data:data}
   }
   catch (e) {
-      return {status:"fail" , data:e}.toString() ;
+      return {status:"fail" , error:e}.toString() ;
   }
 
 }
@@ -38,7 +38,7 @@ const CategoryListService =async () =>{
         return {status:"success" , data:data}
     }
     catch (e) {
-        return {status:"fail" , data:e}.toString() ;
+        return {status:"fail" , error:e}.toString() ;
     }
 
 }
@@ -51,7 +51,7 @@ const SliderListService =async () =>{
         return {status:"success" , data:data}
     }
     catch (e) {
-        return {status:"fail" , data:e}.toString() ;
+        return {status:"fail" , error:e}.toString() ;
     }
 
 }
@@ -80,7 +80,7 @@ const ListByBrandService =async (req) =>{
       return {status:"success" , data:data}
     }
     catch (e) {
-        return {status:"fail" , data:e}.toString() ;
+        return {status:"fail" , error:e}.toString() ;
     }
 
 }
@@ -109,7 +109,7 @@ const ListByCategoryService =async (req) =>{
         return {status:"success" , data:data}
     }
     catch (e) {
-        return {status:"fail" , data:e}.toString() ;
+        return {status:"fail" , error:e}.toString() ;
     }
 
 }
@@ -138,7 +138,7 @@ const ListByRemarkService =async (req) =>{
         return {status:"success" , data:data}
     }
     catch (e) {
-        return {status:"fail" , data:e}.toString() ;
+        return {status:"fail" , error:e}.toString() ;
     }
 
 }
@@ -169,7 +169,7 @@ const ListBySimilarService =async (req) =>{
         return {status:"success" , data:data}
     }
     catch (e) {
-        return {status:"fail" , data:e}.toString() ;
+        return {status:"fail" , error:e}.toString() ;
     }
 
 }
@@ -204,7 +204,7 @@ const ListByKeywordService =async (req) =>{
       return {status:"success" , data:data}
     }
     catch (e) {
-      return {status:"fail" , data:e}.toString() ;
+      return {status:"fail" , error:e}.toString() ;
     }
 
 }
@@ -244,7 +244,7 @@ const DetailsService =async (req) =>{
      return { status:"success" , data:data };
  }
  catch (e) {
-     return { status:"fail" , data:e }.toString();
+     return { status:"fail" , error:e }.toString();
  }
 
 }
@@ -269,7 +269,7 @@ const ReviewListService =async (req,res) =>{
        return { status:"success" , data:data };
    }
    catch (e) {
-       return { status:"fail" , data:e }.toString();
+       return { status:"fail" , error:e }.toString();
    }
 
 }
