@@ -8,5 +8,5 @@ const DataSchema = mongoose.Schema({
 
 },{ timestamps:true , versionKey:false });
 
-const UserModel = mongoose.model(DataSchema , "users");
+const UserModel = mongoose.model("users" , DataSchema );
 module.exports = UserModel;

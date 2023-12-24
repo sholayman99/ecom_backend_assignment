@@ -10,5 +10,5 @@ const DataSchema = mongoose.Schema({
 
 },{ timestamps:true , versionKey:false });
 
-const ReviewModel = mongoose.model(DataSchema , "reviews");
+const ReviewModel = mongoose.model("reviews" , DataSchema );
 module.exports = ReviewModel;

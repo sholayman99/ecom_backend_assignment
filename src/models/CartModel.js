@@ -12,5 +12,5 @@ const DataSchema = mongoose.Schema({
 
 },{ timestamps:true , versionKey:false });
 
-const CartModel = mongoose.model(DataSchema , "carts");
+const CartModel = mongoose.model( "carts" , DataSchema );
 module.exports = CartModel;

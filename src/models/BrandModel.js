@@ -8,5 +8,5 @@ const DataSchema = mongoose.Schema({
 
 },{ timestamps:true , versionKey:false });
 
-const BrandModel = mongoose.model(DataSchema , "brands");
+const BrandModel = mongoose.model("brands" , DataSchema  );
 module.exports = BrandModel;

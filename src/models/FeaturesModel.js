@@ -10,5 +10,5 @@ const DataSchema = mongoose.Schema({
 
 },{ timestamps:true , versionKey:false });
 
-const FeaturesModel = mongoose.model(DataSchema , "features");
+const FeaturesModel = mongoose.model("features", DataSchema  );
 module.exports = FeaturesModel;
