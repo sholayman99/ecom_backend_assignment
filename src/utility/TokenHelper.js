@@ -12,7 +12,7 @@ exports.encodeToken = (email,user_id) =>{
 
   let key = "123-abc-xyz-sh" ;
   let payload = {email:email , user_id:user_id} ;
-  let expire = {expiresIn: "48hrs"} ;
+  let expire = {expiresIn: "24hrs"} ;
   return jwt.sign(payload,key,expire);
 
 }

@@ -11,10 +11,11 @@ module.exports = (req, res, next) =>{
 
         let token = req.headers['token'];
         if(!token){
-            token = req.cookie['token']
-        }
+        token = req.cookies['token'] ;
+       }
 
         let decoded = decodeToken(token);
+
         if(decoded===null){
             return res.status(401).json({status:"Unauthorized" , message:"Invalid User"})
         }else{

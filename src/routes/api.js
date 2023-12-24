@@ -9,7 +9,11 @@ const router = express.Router();
 
 //importing controllers
 const ProductControllers = require("../controllers/ProductControllers")
-const UserControllers = require("../controllers/UserControllers")
+const UserControllers = require("../controllers/UserControllers");
+
+//importing verification middleware
+
+const AuthVerifyMiddleware = require("../middlewares/AuthVerifyMiddleware");
 
 
 //Product related api end-point
@@ -27,9 +31,9 @@ router.get('/ProductReviewList/:ProductID' , ProductControllers.ProductReviewLis
 //User related api end-point
 router.get('/UserOTP/:email' , UserControllers.UserOTP);
 router.get('/VerifyLogin/:email/:otp' , UserControllers.VerifyLogin);
-router.get('/UserLogout' , UserControllers.UserLogout);
-router.post('/CreateProfile' , UserControllers.CreateProfile);
-router.post('/UpdateProfile' , UserControllers.UpdateProfile);
-router.get('/ReadProfile ', UserControllers.ReadProfile);
+router.get('/UserLogout' , AuthVerifyMiddleware, UserControllers.UserLogout);
+router.post('/CreateProfile' ,AuthVerifyMiddleware, UserControllers.CreateProfile);
+router.post('/UpdateProfile' ,AuthVerifyMiddleware, UserControllers.UpdateProfile);
+router.get('/ReadProfile',AuthVerifyMiddleware, UserControllers.ReadProfile);
 
 module.exports = router;

@@ -54,58 +54,45 @@ const VerifyLoginService = async(req) =>{
 
 }
 
-//Query for the user logout
-const UserLogoutService = async(req, res) =>{
 
-    let result = await BrandListService();
 
-    if(result['status'] === "success"){
-        res.status(200).json(result);
-    }else{
-        res.status(400).json(result);
-    }
+//Query for creating and updating a user profile
+const SaveProfileService = async(req, res) =>{
+
+try{
+    let user_id = req.headers['user_id'] ;
+    let reqBody = req.body ;
+    reqBody.userID = user_id ;
+
+    let data = await ProfileModel.updateOne(
+        {userID:user_id},{$set:reqBody} , {upsert:true}
+    );
+    return {status:"success" , message:"Save Profile successfully", data : data  };
+}
+catch (e) {
+    return { status:"fail" , message:"Unsuccessful attempt" , error:e }.toString();
+}
 
 }
 
-//Query for creating a user profile
-const CreateProfileService = async(req, res) =>{
 
-    let result = await BrandListService();
-
-    if(result['status'] === "success"){
-        res.status(200).json(result);
-    }else{
-        res.status(400).json(result);
-    }
-
-}
-
-//Query for Updating a user profile
-const UpdateProfileService = async(req, res) =>{
-
-    let result = await BrandListService();
-
-    if(result['status'] === "success"){
-        res.status(200).json(result);
-    }else{
-        res.status(400).json(result);
-    }
-
-}
 
 //Query  for Reading a user profile
-const ReadProfileService = async(req, res) =>{
+const ReadProfileService = async(req) =>{
 
-    let result = await BrandListService();
-
-    if(result['status'] === "success"){
-        res.status(200).json(result);
-    }else{
-        res.status(400).json(result);
+    try{
+       let user_id = req.headers['user_id'];
+       console.log(user_id)
+       let data = await ProfileModel.find({userID:user_id});
+       return { status:"success" ,  data:data };
     }
+    catch (e) {
+        return { status:"fail" ,  error:e }.toString();
+    }
+
 
 }
 
 module.exports ={
-    UserOTPService,VerifyLoginService,UserLogoutService,CreateProfileService,UpdateProfileService,ReadProfileService
+    UserOTPService,VerifyLoginService,SaveProfileService,ReadProfileService
 }

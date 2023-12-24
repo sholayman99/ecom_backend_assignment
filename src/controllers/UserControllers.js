@@ -5,7 +5,7 @@
 * */
 
 //importing all the service function for these controllers
-const {UserOTPService,VerifyLoginService,UserLogoutService,CreateProfileService,UpdateProfileService,
+const {UserOTPService,VerifyLoginService,SaveProfileService,
     ReadProfileService } = require("../services/UserServices")
 
 //controller for the user otp code
@@ -29,13 +29,13 @@ exports.VerifyLogin = async(req, res) =>{
     if(result['status'] === "success"){
         if(result['message'] === "Valid Token" ){
             let cookieOption = {
-                expires : new Date(Date.now() +  2 * 24 * 60 * 60 ),
+                expires : new Date(Date.now() +  60 * 60 * 1000 ),
                 httpOnly:false
             }
             res.cookie("token" , result['token'] , cookieOption  );
-            res.status(200).json(result);
+           return res.status(200).json(result);
         }else{
-            res.status(200).json(result) ;
+            return res.status(200).json(result) ;
         }
 
     }else{
@@ -47,20 +47,19 @@ exports.VerifyLogin = async(req, res) =>{
 //controller for the user logout
 exports.UserLogout = async(req, res) =>{
 
-    let result = await BrandListService();
-
-    if(result['status'] === "success"){
-        res.status(200).json(result);
-    }else{
-        res.status(400).json(result);
+    let cookieOption = {
+        expires : new Date(Date.now() - 60 * 60 * 1000 ),
+        httpOnly:false
     }
+    res.cookie("token" , " " , cookieOption  );
+    res.status(200).json({ status:"sucess" , message:"Logout successful" });
 
 }
 
 //controller for creating a user profile
 exports.CreateProfile = async(req, res) =>{
 
-    let result = await BrandListService();
+    let result = await SaveProfileService(req);
 
     if(result['status'] === "success"){
         res.status(200).json(result);
@@ -73,7 +72,7 @@ exports.CreateProfile = async(req, res) =>{
 //controller for Updating a user profile
 exports.UpdateProfile = async(req, res) =>{
 
-    let result = await BrandListService();
+    let result = await SaveProfileService(req);
 
     if(result['status'] === "success"){
         res.status(200).json(result);
@@ -81,17 +80,18 @@ exports.UpdateProfile = async(req, res) =>{
         res.status(400).json(result);
     }
 
+
 }
 
 //controller for Reading a user profile
 exports.ReadProfile = async(req, res) =>{
 
-    let result = await BrandListService();
+    let result = await ReadProfileService(req);
 
     if(result['status'] === "success"){
-        res.status(200).json(result);
+        return res.status(200).json(result);
     }else{
-        res.status(400).json(result);
+        return res.status(400).json(result);
     }
 
 }

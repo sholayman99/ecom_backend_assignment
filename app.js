@@ -21,6 +21,7 @@ const hpp = require("hpp");
 const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const { rateLimit } = require("express-rate-limit");
+const cookieParser = require("cookie-parser");
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -39,6 +40,7 @@ app.use(xss());
 app.use(mongoSanitize());
 app.use(limiter);
 app.use(express.json());
+app.use(cookieParser());
 
 //implementation of routes
 app.use("/api/v1", router );
