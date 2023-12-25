@@ -82,7 +82,6 @@ const ReadProfileService = async(req) =>{
 
     try{
        let user_id = req.headers['user_id'];
-       console.log(user_id)
        let data = await ProfileModel.find({userID:user_id});
        return { status:"success" ,  data:data };
     }
@@ -93,6 +92,7 @@ const ReadProfileService = async(req) =>{
 
 }
 
+//exporting all the user services
 module.exports ={
     UserOTPService,VerifyLoginService,SaveProfileService,ReadProfileService
 }

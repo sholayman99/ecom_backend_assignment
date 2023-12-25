@@ -1,6 +1,14 @@
+
+/*
+* Author: Md. Sholayman
+* Description: This file contains data table model for all product sliders
+* Date : 23 December 2023
+* */
+
+//importing database
 const mongoose = require("mongoose");
 
-
+//creating schema(database model)
 const DataSchema = mongoose.Schema({
 
     title :{type:String , required:true},

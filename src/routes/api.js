@@ -10,9 +10,10 @@ const router = express.Router();
 //importing controllers
 const ProductControllers = require("../controllers/ProductControllers")
 const UserControllers = require("../controllers/UserControllers");
-const WishControllers = require("../controllers/WishControllers")
+const WishControllers = require("../controllers/WishControllers");
+const CartControllers = require("../controllers/CartControllers");
 
-//importing verification middleware
+//importiCartControllersg verification middleware
 
 const AuthVerifyMiddleware = require("../middlewares/AuthVerifyMiddleware");
 
@@ -41,5 +42,11 @@ router.get('/ReadProfile',AuthVerifyMiddleware, UserControllers.ReadProfile);
 router.post('/SaveWishList' , AuthVerifyMiddleware , WishControllers.SaveWishList);
 router.post('/RemoveWishList' , AuthVerifyMiddleware , WishControllers.RemoveWishList);
 router.get('/WishList' , AuthVerifyMiddleware , WishControllers.WishList);
+
+//Cart Related api end-point
+router.post('/SaveCartList' , AuthVerifyMiddleware , CartControllers.SaveCartList );
+router.post('/UpdateCartList/:cartID' , AuthVerifyMiddleware , CartControllers.UpdateCartList )
+router.post('/RemoveCartList' , AuthVerifyMiddleware , CartControllers.RemoveCartList );
+router.get('/CartList' , AuthVerifyMiddleware , CartControllers.CartList );
 
 module.exports = router;

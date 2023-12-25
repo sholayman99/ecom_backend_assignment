@@ -13,7 +13,6 @@ const SaveWishListService = async(req) =>{
    try {
        let user_id = req.headers['user_id'];
        let reqBody = req.body ;
-       console.log(reqBody)
        reqBody.userID = user_id ;
        let data = await WishModel.updateOne(reqBody, {$set:reqBody} , {upsert:true});
        return { status:"success" , message:"Saved Data Successfully" , data:data };
@@ -29,7 +28,6 @@ const RemoveWishListService = async(req) =>{
     try {
         let user_id = req.headers['user_id'];
         let reqBody = req.body ;
-        console.log(reqBody)
         reqBody.userID = user_id ;
         let data = await WishModel.deleteOne(reqBody);
         return { status:"success" , message:"Deleted Data Successfully" , data:data };
