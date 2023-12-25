@@ -29,7 +29,7 @@ exports.VerifyLogin = async(req, res) =>{
     if(result['status'] === "success"){
         if(result['message'] === "Valid Token" ){
             let cookieOption = {
-                expires : new Date(Date.now() +  60 * 60 * 1000 ),
+                expires : new Date(Date.now() + 24 * 60 * 60 * 1000 ),
                 httpOnly:false
             }
             res.cookie("token" , result['token'] , cookieOption  );
@@ -48,7 +48,7 @@ exports.VerifyLogin = async(req, res) =>{
 exports.UserLogout = async(req, res) =>{
 
     let cookieOption = {
-        expires : new Date(Date.now() - 60 * 60 * 1000 ),
+        expires : new Date(Date.now() - 24 * 60 * 60 * 1000 ),
         httpOnly:false
     }
     res.cookie("token" , " " , cookieOption  );

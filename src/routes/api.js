@@ -10,6 +10,7 @@ const router = express.Router();
 //importing controllers
 const ProductControllers = require("../controllers/ProductControllers")
 const UserControllers = require("../controllers/UserControllers");
+const WishControllers = require("../controllers/WishControllers")
 
 //importing verification middleware
 
@@ -35,5 +36,10 @@ router.get('/UserLogout' , AuthVerifyMiddleware, UserControllers.UserLogout);
 router.post('/CreateProfile' ,AuthVerifyMiddleware, UserControllers.CreateProfile);
 router.post('/UpdateProfile' ,AuthVerifyMiddleware, UserControllers.UpdateProfile);
 router.get('/ReadProfile',AuthVerifyMiddleware, UserControllers.ReadProfile);
+
+//Wish Related api end-point
+router.post('/SaveWishList' , AuthVerifyMiddleware , WishControllers.SaveWishList);
+router.post('/RemoveWishList' , AuthVerifyMiddleware , WishControllers.RemoveWishList);
+router.get('/WishList' , AuthVerifyMiddleware , WishControllers.WishList);
 
 module.exports = router;
