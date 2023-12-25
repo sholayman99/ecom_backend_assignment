@@ -13,8 +13,7 @@ const UserControllers = require("../controllers/UserControllers");
 const WishControllers = require("../controllers/WishControllers");
 const CartControllers = require("../controllers/CartControllers");
 
-//importiCartControllersg verification middleware
-
+//importing token verification middleware
 const AuthVerifyMiddleware = require("../middlewares/AuthVerifyMiddleware");
 
 
