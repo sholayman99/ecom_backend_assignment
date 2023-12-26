@@ -15,7 +15,7 @@ An easy way to get started with a Express server offering a REST API with Node.j
 
 ## Installation
 
-- `git clone git@github.com:rwieruch/node-express-server-rest-api.git`
+- `git clone https://github.com/sholayman99/ecom_backend_assignment.git`
 - `cd  ecom_backend_assignment`
 - `npm install`
 - `npm start`
