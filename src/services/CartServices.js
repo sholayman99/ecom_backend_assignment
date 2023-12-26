@@ -81,10 +81,10 @@ const CartListService = async(req) =>{
             unwindProductStage,joinWithBrandStage,unwindBrandStage,joinWithCategoryStage,unwindCategoryStage,
             projectStage
         ]);
-        return {status:"success" , message:"Data Removed Successfully" , data:data};
+        return {status:"success" ,  data:data};
     }
     catch (e) {
-        return {status:"failed" , message:"Unsuccessful attempt" , error:e}.toString();
+        return {status:"failed" , error:e}.toString();
     }
 }
 
