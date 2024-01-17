@@ -10,7 +10,7 @@ const mongoose = require("mongoose");
 //creating schema(database model)
 const DataSchema = mongoose.Schema({
 
-    img1 : {type: mongoose.Schema.Types.ObjectId , required:true},
+    img1 : {type:String , required:true},
     img2 :{type:String , required:true},
     img3 :{type:String , required:true},
     img4 :{type:String , required:true},
